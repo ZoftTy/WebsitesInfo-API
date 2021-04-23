@@ -10,7 +10,6 @@ const select = new Select()
 // 获取网站所有信息
 router.post('/all', async ctx => {
     const { body } = ctx.request
-
     ctx.body = (await select.to(body)).all()
 })
 
@@ -24,7 +23,6 @@ router.post('/title', async ctx => {
 // 获取网站图标链接
 router.post('/icons', async ctx => {
     const { body } = ctx.request
-
     ctx.body = (await select.to(body)).icons()
 })
 

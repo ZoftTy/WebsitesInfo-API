@@ -27,7 +27,6 @@ class Select {
         const title = this.title()
         const icons = this.icons()
         return {
-            code: 200,
             title,
             icons
         }
@@ -38,7 +37,6 @@ class Select {
         console.log(this)
         const title = this.$('title').text()
         return {
-            code: 200,
             title
         }
     }
@@ -47,7 +45,6 @@ class Select {
     icons() {
         const icons = this.$('[rel="icon"]').attr('href')
         return {
-            code: 200,
             icons
         }
     }
