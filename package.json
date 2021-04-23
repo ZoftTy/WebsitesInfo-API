@@ -1,0 +1,22 @@
+{
+  "name": "websitesinfo-api",
+  "version": "1.0.0",
+  "description": "Get website information",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "repository": "https://github.com/ZoftTy/WebsitesInfo-API.git",
+  "author": "zoftty",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.6",
+    "koa": "^2.13.1",
+    "koa-body": "^4.2.0",
+    "koa-logger": "^3.2.1",
+    "koa-router": "^10.0.0",
+    "request": "^2.88.2"
+  }
+}
