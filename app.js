@@ -1,6 +1,7 @@
 import Koa from "koa"
 import KoaBody from "koa-body"
 import KoaLogger from "koa-logger"
+import KoaCors from "koa2-cors"
 
 import config from "./config.js"
 import router from "./router.js"
@@ -12,9 +13,13 @@ const app = new Koa()
 // 添加日志模块
 app.use(KoaLogger())
 
+// 跨域
+app.use(KoaCors())
+
 // 添加 Body 内容处理模块
 app.use(KoaBody())
 
+// 路由错误捕获
 app.use(handler)
 
 // 注册路由
