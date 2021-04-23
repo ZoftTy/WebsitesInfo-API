@@ -8,21 +8,21 @@ const router = new Router()
 const select = new Select()
 
 // 获取网站所有信息
-router.all('/all', async ctx => {
+router.post('/all', async ctx => {
     const { body } = ctx.request
 
     ctx.body = (await select.to(body)).all()
 })
 
 // 获取网站标题
-router.all('/title', async ctx => {
+router.post('/title', async ctx => {
     const { body } = ctx.request
 
     ctx.body = (await select.to(body)).title()
 })
 
 // 获取网站图标链接
-router.all('/icons', async ctx => {
+router.post('/icons', async ctx => {
     const { body } = ctx.request
 
     ctx.body = (await select.to(body)).icons()
