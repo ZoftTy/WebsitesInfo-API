@@ -12,12 +12,11 @@
   "author": "zoftty",
   "license": "MIT",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.6",
     "koa": "^2.13.1",
     "koa-body": "^4.2.0",
     "koa-logger": "^3.2.1",
     "koa-router": "^10.0.0",
     "koa2-cors": "^2.0.6",
-    "request": "^2.88.2"
+    "puppeteer": "^9.0.0"
   }
 }
