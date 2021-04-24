@@ -8,8 +8,6 @@ class Select {
     // 获取页面内容
     async exec(url) {
         const browser = await puppeteer.launch({
-            // 关闭无头模式
-            headless: false,
             args: ['--no-sandbox', '--disable-setuid-sandbox']
         })
 
