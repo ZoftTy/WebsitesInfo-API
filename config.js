@@ -1,4 +1,4 @@
-
+// 配置文件
 export default {
-    port: 3000,
+    port: 1331,
 }
