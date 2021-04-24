@@ -7,9 +7,7 @@ class Select {
 
     // 获取页面内容
     async exec(url) {
-        const browser = await puppeteer.launch({
-            args: ['--no-sandbox', '--disable-setuid-sandbox']
-        })
+        const browser = await puppeteer.launch()
 
         // 新建一个标签页
         const page = await browser.newPage()
