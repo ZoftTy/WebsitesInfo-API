@@ -13,7 +13,11 @@ class Cache {
 	}
 
 	get exist() {
-		return this.data != undefined
+		if (this.data != undefined) {
+			// 判断是否过期
+			return new Date().getTime() - this.data.time < config.cache.expires
+		}
+		return false
 	}
 
 	get data() {
@@ -23,7 +27,11 @@ class Cache {
 
 	set data(val) {
 		const cache = JSON.parse(fs.readFileSync(config.cache.path))
-		cache[this.url.hostname] = val
+		cache[this.url.hostname] = {
+			title: val.title,
+			icons: val.icons,
+			time: new Date().getTime()
+		}
 		writeFileSync(config.cache.path, JSON.stringify(cache, null, '\t'))
 	}
 }
