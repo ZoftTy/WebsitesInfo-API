@@ -33,6 +33,8 @@ class Cache {
 			time: new Date().getTime()
 		}
 		writeFileSync(config.cache.path, JSON.stringify(cache, null, '\t'))
+
+		return cache[this.url.hostname]
 	}
 }
 
