@@ -1,29 +1,28 @@
 import Router from "koa-router"
-import Select from "./select.js"
+import Controller from "./controller.js"
 
 // 初始化 Router
 const router = new Router()
 
-// 实例化 Select
-const select = new Select()
-
 // 获取网站所有信息
 router.post('/all', async ctx => {
-    const { body } = ctx.request
-    ctx.body = (await select.to(body)).all()
+	const url = new URL(ctx.request.body.url)
+
+	ctx.body = (await new Controller(url)).all()
 })
 
 // 获取网站标题
 router.post('/title', async ctx => {
-    const { body } = ctx.request
+	const url = new URL(ctx.request.body.url)
 
-    ctx.body = (await select.to(body)).title()
+	ctx.body = (await new Controller(url)).title()
 })
 
 // 获取网站图标链接
 router.post('/icons', async ctx => {
-    const { body } = ctx.request
-    ctx.body = (await select.to(body)).icons()
+	const url = new URL(ctx.request.body.url)
+
+	ctx.body = (await new Controller(url)).icons()
 })
 
 // 导出路由
