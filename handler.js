@@ -16,13 +16,26 @@ const handler = async (ctx, next) => {
         console.log('\x1B[31m%s\x1B[0m', `[ERROR]:`, err.message || err)
 
         // 判断用户验证错误
-        if (err.message == 'undefined is not a valid uri or options object.') {
+        if (err.message == `undefined is not a valid uri or options object.`) {
             ctx.response.body = {
                 code: 400,
                 message: '参数错误'
             }
             // 状态码
             ctx.response.status = 400
+
+            return false
+        }
+
+        // 判断网站无法访问错误
+        if (err.message.indexOf(`getAttribute' of null`) != -1) {
+            ctx.response.body = {
+                code: 500,
+                message: '目标网站无法访问'
+            }
+            // 状态码
+            ctx.response.status = 500
+
             return false
         }
 
@@ -35,6 +48,7 @@ const handler = async (ctx, next) => {
             }
             // 状态码
             ctx.response.status = err.status || 200
+
             return false
         }
 
