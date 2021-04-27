@@ -46,7 +46,7 @@ const handler = async (ctx, next) => {
                 message: '目标网站连接超时'
             }
             // 状态码
-            ctx.response.status = 500
+            ctx.response.status = 200
 
             return false
         }

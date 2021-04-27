@@ -31,6 +31,7 @@ class Controller extends Cache {
 
 		// return
 		return {
+			code: 200,
 			title,
 			icons
 		}
@@ -58,7 +59,10 @@ class Controller extends Cache {
 		}
 
 		// 返回
-		return { icons }
+		return {
+			code: 200,
+			icons
+		}
 	}
 }
 
