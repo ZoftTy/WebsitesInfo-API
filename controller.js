@@ -39,7 +39,10 @@ class Controller extends Cache {
 
 	title() {
 		// 直接返回无需处理
-		return { title: this.data.title }
+		return {
+			code: 200,
+			title: this.data.title
+		}
 
 	}
 
