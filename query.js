@@ -28,7 +28,7 @@ export default async (url) => {
 	})
 
 	// 打开链接
-	await page.goto(url)
+	await page.goto(url, { timeout: 2000 })
 
 	// 渲染并执行 javascript 返回值
 	const data = await page.evaluate(() => {
