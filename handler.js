@@ -11,6 +11,7 @@ const handler = async (ctx, next) => {
             // 状态码
             ctx.response.status = 404
         }
+
     } catch (err) {
         // 输出错误
         console.log('\x1B[31m%s\x1B[0m', `[ERROR]:`, err.message || err)
