@@ -13,6 +13,15 @@ export default async (url) => {
 	// 新建一个标签页
 	const page = await connect.newPage()
 
+	// 设置拦截
+	await page.setRequestInterception(true)
+
+	// 请求
+	page.on('request', request => {
+		if (request.resourceType() === 'image') request.abort()
+		else request.continue()
+	})
+
 	// 打开链接
 	await page.goto(url, { timeout: config.timeout })
 
