@@ -1,9 +1,10 @@
-import puppeteer from "puppeteer"
-import config from "./config.js"
+import puppeteer from 'puppeteer'
+import config from './config.js'
 
 // 初始化 puppeteer
 const browser = await puppeteer.launch(config.puppeteer)
 const browserWSEndpoint = browser.wsEndpoint()
+const image = config.img.replace(/^data:image\/\w+;base64,/, "")
 
 // 获取页面内容
 export default async (url) => {
@@ -18,8 +19,18 @@ export default async (url) => {
 
 	// 请求
 	page.on('request', request => {
-		if (request.resourceType() === 'image') request.abort()
-		else request.continue()
+		let resourceType = request.resourceType()
+		// 判断Image
+		if (resourceType === 'image') {
+			// 返回图片
+			request.respond({
+				status: 200,
+				body: Buffer.from(image, 'base64')
+			})
+		} else if (resourceType === 'document') {
+			request.continue()
+		}
+		else request.respond({ status: 200 })
 	})
 
 	// 打开链接
@@ -29,13 +40,26 @@ export default async (url) => {
 	try {
 		// 渲染并执行 javascript 返回值
 		const data = await page.evaluate(() => {
-			// 返回
-			return {
+			// 返回数据
+			let data = {
 				// 页面标题
 				title: document.title,
 				// 页面图标
-				icons: document.querySelector("head [rel*='icon']").getAttribute('href')
+				icons: ''
 			}
+
+			// 捕获错误
+			try {
+				// 获取图标
+				data.icons = document.querySelector("head [rel*='icon']").getAttribute('href')
+
+			} catch (err) {
+				// 发生错误时icons = undefined
+				data.icons == undefined
+			}
+
+			// 返回
+			return data
 		})
 		// 关闭标签页
 		await page.close()
