@@ -15,5 +15,6 @@ export default {
         args: ['--no-sandbox', '--disable-setuid-sandbox']
     },
     // 获取数据超时时间
-    timeout: 3000
+    timeout: 3000,
+    img: 'data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs='
 }
