@@ -51,8 +51,8 @@ class Controller extends Cache {
 		let icons = this.data.icons
 
 		// 判断是否是默认路径
-		if (icons == '/favicon.ico') {
-			icons = this.url.origin + icons
+		if (icons == '/favicon.ico' || icons == '') {
+			icons = this.url.origin + '/favicon.ico'
 		}
 
 		// 判断是否带有http文本
