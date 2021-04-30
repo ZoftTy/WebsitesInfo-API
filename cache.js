@@ -27,15 +27,23 @@ class Cache {
 	get data() {
 		// 读取缓存文件
 		const cache = JSON.parse(fs.readFileSync(config.cache.path))
-		// 返回最新值
-		return cache[this.url.hostname]
+		// 返回值
+		try {
+			return cache[this.url.hostname][this.url.pathname]
+		} catch (err) {
+			return undefined
+		}
 	}
 
 	set data(val) {
 		// 读取缓存文件
 		const cache = JSON.parse(fs.readFileSync(config.cache.path))
-		// 添加属性
-		cache[this.url.hostname] = {
+
+		// 判断是否拥有该网站的缓存
+		// 没有就添加
+		if (cache.hasOwnProperty(this.url.hostname)) cache[this.url.hostname] = {}
+		// 添加该网站当前路径的缓存
+		cache[this.url.hostname][this.url.pathname] = {
 			title: val.title,
 			icons: val.icons,
 			expires: new Date().getTime()
