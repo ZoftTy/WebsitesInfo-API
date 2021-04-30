@@ -16,11 +16,23 @@ const handler = async (ctx, next) => {
         // 输出错误
         console.log('\x1B[31m%s\x1B[0m', `[ERROR]:`, err.message || err)
 
-        // 判断用户验证错误
+        // 判断参数错误
         if (err.message == `undefined is not a valid uri or options object.`) {
             ctx.response.body = {
                 code: 400,
                 message: '参数错误'
+            }
+            // 状态码
+            ctx.response.status = 400
+
+            return false
+        }
+
+        // 判断URL错误
+        if (err.message.indexOf('Invalid URL') != -1) {
+            ctx.response.body = {
+                code: 400,
+                message: 'URL无效'
             }
             // 状态码
             ctx.response.status = 400
