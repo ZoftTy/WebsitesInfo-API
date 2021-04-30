@@ -11,6 +11,7 @@ export default {
     },
     // puppeteer参数
     puppeteer: {
+        // headless: false,
         args: ['--no-sandbox', '--disable-setuid-sandbox']
     },
     // 获取数据超时时间
