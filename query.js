@@ -50,9 +50,26 @@ export default async (url) => {
 
 			// 捕获错误
 			try {
-				// 获取图标
-				data.icons = document.querySelector("head [rel*='icon']").getAttribute('href')
-
+				// 获取所有link标签
+				let links = document.querySelectorAll('link')
+				// 遍历link标签
+				for (const key in links) {
+					if (Object.hasOwnProperty.call(links, key)) {
+						const element = links[key]
+						// 获取当前元素rel属性的icon索引
+						let index = element.getAttribute('rel').split(' ').indexOf('icon')
+						// 判断是否有icon值
+						if (index != -1) {
+							// 赋值
+							data.icons = element.getAttribute('href')
+							// 跳出循环
+							break
+						} else {
+							// 找不到值就为 undefined
+							data.icons = undefined
+						}
+					}
+				}
 			} catch (err) {
 				// 发生错误时icons = undefined
 				data.icons == undefined
