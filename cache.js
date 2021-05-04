@@ -29,7 +29,12 @@ class Cache {
 		const cache = JSON.parse(fs.readFileSync(config.cache.path))
 		// 返回值
 		try {
-			return cache[this.url.hostname][this.url.pathname]
+			let data = cache[this.url.hostname][this.url.pathname]
+			// 判断当前数据是否有图标属性
+			// 如果没有就获取默认的值赋值
+			if (data.icons == undefined) data.icons = cache[this.url.hostname].icons
+			// 返回值
+			return data
 		} catch (err) {
 			return undefined
 		}
