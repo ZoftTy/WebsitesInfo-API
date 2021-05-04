@@ -51,7 +51,7 @@ class Controller extends Cache {
 		let icons = this.data.icons
 
 		// 判断是否是默认路径
-		if (icons == '/favicon.ico' || icons == '') {
+		if (icons == undefined || icons == icons.indexOf('/favicon.ico') == 0) {
 			icons = this.url.origin + '/favicon.ico'
 		}
 
