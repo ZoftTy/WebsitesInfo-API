@@ -71,4 +71,4 @@
 
 Copyright (c) ZoftTy. All rights reserved.
 
-Licensed under the [MIT](LICENSE.txt) license.
+Licensed under the [MIT](LICENSE) license.
