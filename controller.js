@@ -49,9 +49,15 @@ class Controller extends Cache {
 	icons() {
 		// 赋值
 		let icons = this.data.icons
+
 		// 判断是否是默认路径
 		if (icons == undefined || icons.indexOf('/favicon.ico') == 0) {
 			icons = this.url.origin + '/favicon.ico'
+		}
+
+		// 判断是否是相对路径
+		if (icons.slice(0, 1) == '/') {
+			icons = this.url.origin + icons
 		}
 
 		// 判断是否带有http文本
