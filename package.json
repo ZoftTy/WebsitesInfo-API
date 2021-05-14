@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon app.js",
+    "prd": "pm2 start .",
     "start": "node app.js"
   },
   "repository": "https://github.com/ZoftTy/WebsitesInfo-API.git",
