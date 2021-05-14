@@ -56,14 +56,15 @@ class Controller extends Cache {
 		}
 
 		// 判断是否是相对路径
-		if (icons.slice(0, 1) == '/') {
+		if (icons.slice(0, 1) == '/' && icons.slice(0, 2) != '//') {
 			icons = this.url.origin + icons
 		}
 
 		// 判断是否带有http文本
-		if (icons.indexOf('http') == -1) {
+		if (icons.slice(0, 2) == '//') {
 			// 在字符串前面添加
 			icons = this.url.protocol + icons
+
 		}
 
 		// 返回
