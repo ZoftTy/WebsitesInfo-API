@@ -107,3 +107,5 @@ dist
 
 # Mac OS DS_Store file
 .DS_Store
+
+cache.json
