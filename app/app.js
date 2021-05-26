@@ -3,9 +3,9 @@ import KoaBody from "koa-body"
 import KoaLogger from "koa-logger"
 import KoaCors from "koa2-cors"
 
-import config from "./config.js"
 import router from "./router.js"
-import handler from './handler.js'
+import config from "./config/config.js"
+import handler from "./utils/handler.js"
 
 // 初始化 Koa
 const app = new Koa()

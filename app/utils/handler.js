@@ -14,7 +14,7 @@ const handler = async (ctx, next) => {
 
     } catch (err) {
         // 输出错误
-        console.log('\x1B[31m%s\x1B[0m', `[ERROR]:`, err.message || err)
+        console.log('\x1B[31m%s\x1B[0m', `[ERROR]:`, err)
 
         // 判断参数错误
         if (err.message == `undefined is not a valid uri or options object.`) {

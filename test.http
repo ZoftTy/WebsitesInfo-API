@@ -1,5 +1,5 @@
 # @host = http://172.16.27.79:1331
-@host = http://localhost:1331
+@host = http://localhost:1231
 
 
 ###
@@ -39,7 +39,7 @@ content-type: application/json
 
 ###
 
-POST {{host}}/icons
+POST {{host}}/all
 content-type: application/json
 
 {
@@ -48,9 +48,20 @@ content-type: application/json
 
 
 ###
-POST {{host}}/all
+POST {{host}}/api/info
 content-type: application/json
 
 {
     "url": "https://snapdrop.net"
+}
+
+
+###
+
+POST {{host}}/api/add
+content-type: application/json
+
+{
+    "url": "https://snapdrop.net",
+    "icons":"https://snapdrop.net/images/favicon-96x96.png"
 }

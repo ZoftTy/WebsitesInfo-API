@@ -5,7 +5,9 @@ export default {
     // 缓存配置
     cache: {
         // 缓存路径
-        path: './cache.json',
+        path: './app/data/cache.json',
+        // 用户设置的缓存
+        userPath: './app/data/user.json',
         // 过期时间
         expires: 7200000
     },

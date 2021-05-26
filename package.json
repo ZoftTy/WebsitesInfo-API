@@ -5,8 +5,8 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon app.js",
-    "start": "node app.js"
+    "dev": "nodemon ./app/app.js",
+    "start": "node ./app/app.js"
   },
   "repository": "https://github.com/ZoftTy/WebsitesInfo-API.git",
   "author": "zoftty",

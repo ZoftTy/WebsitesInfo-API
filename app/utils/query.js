@@ -1,5 +1,5 @@
 import puppeteer from 'puppeteer'
-import config from './config.js'
+import config from '../config/config.js'
 
 // 初始化 puppeteer
 const browser = await puppeteer.launch(config.puppeteer)
