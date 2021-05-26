@@ -1,0 +1,56 @@
+# @host = http://172.16.27.79:1331
+@host = http://localhost:1331
+
+
+###
+
+POST {{host}}/all
+content-type: application/json
+
+{
+    "url": "https://www.bilibili.com"
+}
+###
+
+POST {{host}}/all
+content-type: application/json
+
+{
+    "url": "https://www.bilibili.com/v/channel/158189?spm_id_from=333.851.b_7072696d61727950616765546162.4&tab=multiple"
+}
+
+###
+
+POST {{host}}/all
+content-type: application/json
+
+{
+    "url": "https://google.com"
+}
+
+###
+
+POST {{host}}/all
+content-type: application/json
+
+{
+    "url": "https://blog.csdn.net/weixin_36445197/article/details/108753877/"
+}
+
+###
+
+POST {{host}}/icons
+content-type: application/json
+
+{
+    "url": "https://cn.bing.com"
+}
+
+
+###
+POST {{host}}/all
+content-type: application/json
+
+{
+    "url": "https://snapdrop.net"
+}

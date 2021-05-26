@@ -53,17 +53,27 @@ class Controller extends Cache {
 		// 判断是否是默认路径
 		if (icons == undefined || icons.indexOf('/favicon.ico') == 0) {
 			icons = this.url.origin + '/favicon.ico'
-		}
 
-		// 判断是否是相对路径
-		if (icons.slice(0, 1) == '/') {
-			icons = this.url.origin + icons
-		}
-
-		// 判断是否带有http文本
-		if (icons.indexOf('http') == -1) {
+			// 判断是否省略了http
+		} else if (icons.slice(0, 2) == '//') {
 			// 在字符串前面添加
 			icons = this.url.protocol + icons
+
+			// 判断是否是绝对路径
+		} else if (icons.slice(0, 1) == '/') {
+			icons = this.url.origin + icons
+
+			// 判断是否是相对路径
+		} else if (icons.slice(0, 4) != 'http') {
+			icons = `${this.url.origin}/${icons}`
+		}
+
+		// 测试地址是否正确
+		try {
+			new URL(icons)
+		} catch {
+			// 地址错误返回默认值
+			icons = this.url.origin + '/favicon.ico'
 		}
 
 		// 返回
