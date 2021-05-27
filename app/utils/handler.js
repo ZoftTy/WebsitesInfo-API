@@ -23,7 +23,7 @@ const handler = async (ctx, next) => {
                 message: '参数错误'
             }
             // 状态码
-            ctx.response.status = 400
+            ctx.response.status = 200
 
             return false
         }
@@ -35,7 +35,7 @@ const handler = async (ctx, next) => {
                 message: 'URL无效'
             }
             // 状态码
-            ctx.response.status = 400
+            ctx.response.status = 200
 
             return false
         }
