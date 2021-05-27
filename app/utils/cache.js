@@ -65,7 +65,8 @@ class Cache {
 		try {
 			data = cache[this.url.hostname][this.url.pathname]
 		} catch {
-			data = {}
+			// 初始化数组
+			data = { title: undefined, icons: [] }
 		}
 		// 判断是否有用户设置的缓存
 		if (userCache.hasOwnProperty(this.url.hostname)) {
