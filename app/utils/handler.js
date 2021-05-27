@@ -55,7 +55,7 @@ const handler = async (ctx, next) => {
         // 判断网站无法访问错误
         if (err.message == 'Navigation timeout of 3000 ms exceeded') {
             ctx.response.body = {
-                code: 500,
+                code: 404,
                 message: '目标网站连接超时'
             }
             // 状态码
