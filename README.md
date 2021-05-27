@@ -4,7 +4,7 @@
 
 #### Request
 - Method: **POST**
-- URL:  ```/all```
+- URL:  ```/api/info```
 - Headers：```Content-Type: application/json```
 - Body:
 ```
@@ -23,16 +23,17 @@
 }
 ```
 
-### 获取标题
+### 添加图标
 
 #### Request
 - Method: **POST**
-- URL:  ```/title```
+- URL:  ```/api/add```
 - Headers：```Content-Type: application/json```
 - Body:
 ```
 {
-  "url":"https://bilibili.com"
+  "url":"https://bilibili.com",
+  "icons": "https://bilibili.com/favicon.ico"
 }
 ```
 
@@ -41,29 +42,7 @@
 ```
 {
   "code": 200,
-  "title": "哔哩哔哩 (゜-゜)つロ 干杯~-bilibili",
-}
-```
-
-### 获取图标
-
-#### Request
-- Method: **POST**
-- URL:  ```/icons```
-- Headers：```Content-Type: application/json```
-- Body:
-```
-{
-  "url":"https://bilibili.com"
-}
-```
-
-#### Response
-- Body
-```
-{
-  "code": 200,
-  "icons": "https://static.hdslb.com/mobile/img/512.png"
+  "title": "添加成功",
 }
 ```
 
