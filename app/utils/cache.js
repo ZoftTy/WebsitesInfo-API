@@ -83,13 +83,14 @@ class Cache {
 		return data
 	}
 
-	set data(val) {
+	set data(value) {
 		// 判断是否拥有该网站的缓存, 没有就添加一个空的缓存
 		if (!cache.hasOwnProperty(this.url.hostname)) cache[this.url.hostname] = {}
-		// 添加该网站当前路径的缓存
+
+		// 添加缓存
 		cache[this.url.hostname][this.url.pathname] = {
-			title: val.title,
-			icons: [val.icons],
+			title: value.title,
+			icons: value.icons || [],
 			expires: new Date().getTime()
 		}
 
@@ -97,7 +98,7 @@ class Cache {
 		write()
 
 		// 返回最新值
-		return cache[this.url.hostname]
+		return cache[this.url.hostname][this.url.pathname]
 	}
 }
 
