@@ -43,20 +43,8 @@ const handler = async (ctx, next) => {
         // 判断网站无法访问
         if (err.message.indexOf(`net::ERR_CONNECTION_RESET at`) != -1) {
             ctx.response.body = {
-                code: 500,
+                code: 404,
                 message: '目标网站无法访问'
-            }
-            // 状态码
-            ctx.response.status = 200
-
-            return false
-        }
-
-        // 判断网站数据无法获取
-        if (err.message.indexOf(`getAttribute' of null`) != -1) {
-            ctx.response.body = {
-                code: 500,
-                message: '目标网站无法获取数据'
             }
             // 状态码
             ctx.response.status = 200
