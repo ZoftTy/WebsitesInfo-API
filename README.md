@@ -1,12 +1,20 @@
-# API接口
+# 用于获取网站标题和图标的 API
+
+## DEMO
+
+[DEMO](https://zoft.work:1231)
+
+## API 接口
 
 ### 获取标题和图标
 
 #### Request
+
 - Method: **POST**
-- URL:  ```/api/info```
-- Headers：```Content-Type: application/json```
+- URL: `/api/info`
+- Headers：`Content-Type: application/json`
 - Body:
+
 ```
 {
   "url":"https://bilibili.com"
@@ -14,7 +22,9 @@
 ```
 
 #### Response
+
 - Body
+
 ```
 {
   "code": 200,
@@ -22,10 +32,13 @@
   "icons": "https://static.hdslb.com/mobile/img/512.png"
 }
 ```
+
 **当有多个图标时返回一个数组**
 
-下标为0的数据为自动获取的图标
+下标为 0 的数据为自动获取的图标
+
 - Body
+
 ```
 {
   "code": 200,
@@ -37,14 +50,15 @@
 }
 ```
 
-
 ### 添加图标
 
 #### Request
+
 - Method: **POST**
-- URL:  ```/api/add```
-- Headers：```Content-Type: application/json```
+- URL: `/api/add`
+- Headers：`Content-Type: application/json`
 - Body:
+
 ```
 {
   "url":"https://bilibili.com",
@@ -53,7 +67,9 @@
 ```
 
 #### Response
+
 - Body
+
 ```
 {
   "code": 200,

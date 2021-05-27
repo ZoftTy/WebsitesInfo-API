@@ -108,4 +108,6 @@ dist
 # Mac OS DS_Store file
 .DS_Store
 
-app/data/*
+app/data/
+
+test/
