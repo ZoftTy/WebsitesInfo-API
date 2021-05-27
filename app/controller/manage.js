@@ -21,14 +21,6 @@ class Manage {
   // 缓存保存变量
   userCache = new Proxy(JSON.parse(fs.readFileSync(config.cache.userPath)), this.handler)
 
-  list(ctx) {
-
-  }
-
-  details() {
-
-  }
-
   add(ctx) {
     // 获取网站地址
     let url = new URL(ctx.request.body.url)
