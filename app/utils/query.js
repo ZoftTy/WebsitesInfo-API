@@ -81,6 +81,8 @@ export default async (url) => {
 		// 关闭标签页
 		await page.close()
 
+		console.log('\x1B[36m%s\x1B[0m', '[INFO]:', '获取到的数据', data)
+
 		// 返回值
 		return data
 

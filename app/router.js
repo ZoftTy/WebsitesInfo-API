@@ -10,8 +10,8 @@ const manage = new ManageController()
 
 // 获取网站所有信息
 
-router.get('/api/info', ctx => index.get(ctx))
-router.post('/api/info', ctx => index.get(ctx))
+router.get('/api/info', ctx => index.index(ctx))
+router.post('/api/info', ctx => index.index(ctx))
 
 // 添加网站图标缓存
 router.post('/api/add', ctx => manage.add(ctx))

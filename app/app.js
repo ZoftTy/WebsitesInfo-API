@@ -6,12 +6,16 @@ import KoaCors from "koa2-cors"
 import router from "./router.js"
 import config from "./config/config.js"
 import handler from "./utils/handler.js"
+import mongodb from "./utils/mongodb.js"
 
 // 初始化 Koa
 const app = new Koa()
 
 // 添加日志模块
 app.use(KoaLogger())
+
+// 链接数据库
+mongodb(config.db.address)
 
 // 跨域
 app.use(KoaCors())

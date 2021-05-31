@@ -1,27 +1,9 @@
-import Cache from "../utils/cache.js"
 import query from "../utils/query.js"
+import infoModel from "../model/info.js"
+import customModel from "../model/custom.js"
 
 class Index {
-	async exist(url) {
-
-		const cache = new Cache(url)
-
-		// 判断是否存在缓存
-		if (!cache.exist) {
-			// 获取标题和图标
-			const data = await query(url.href)
-
-			// 添加缓存
-			cache.data = data
-
-			return cache.data
-		} else {
-			// 存在缓存
-			return cache.data
-		}
-	}
-
-	async get(ctx) {
+	async index(ctx) {
 		// 获取网站地址
 		let url = null
 		if (ctx.request.method == 'GET') {
@@ -30,27 +12,36 @@ class Index {
 			url = new URL(ctx.request.body.url)
 		}
 
-		// 判断是否有缓存
-		let data = await this.exist(url)
-
-		let icons = []
-
-		// 遍历处理
-		for (const item of data.icons) {
-			icons.push(this.icons(item, url))
+		// 判断当前域名的数据是否存在于数据库
+		if (!await infoModel.dataExist(url)) {
+			// 爬取数据
+			const data = await query(url.href)
+			// 添加数据
+			await infoModel.dataAdd(url.hostname, url.pathname, data)
 		}
+		// 获取数据
+		let { title, icon } = await infoModel.dataExist(url)
 
-		// 判断是否只有图标链接
-		if (icons.length == 1) {
-			// 直接赋值
-			icons = icons[icons.length - 1]
+		// 获取用户自定义的数据
+		let customData = await customModel.dataExist(url.hostname)
+
+		let icons = customData ? customData.icons : []
+
+		// 判断是否有自定义数据
+		if (customData && icons.length !== 0) {
+			// 添加默认图标到下标0
+			icons.unshift(icon)
+			// 遍历处理
+			icons = icons.map((value) => this.icons(value, url))
+		} else {
+			icons = this.icons(icon, url)
 		}
 
 		// return
 		ctx.body = {
 			code: 200,
-			title: data.title,
-			icons
+			title: title,
+			icons: icons
 		}
 	}
 
