@@ -5,7 +5,7 @@ import KoaCors from "koa2-cors"
 
 import router from "./router.js"
 import config from "./config/config.js"
-import handler from "./utils/handler.js"
+import handler from "./utils/errorHandler.js"
 import mongodb from "./utils/mongodb.js"
 
 // 初始化 Koa
