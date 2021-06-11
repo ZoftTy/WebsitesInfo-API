@@ -2,7 +2,7 @@
 
 ## DEMO
 
-[DEMO](https://zoft.work:1231)
+[DEMO](http://zoft.work:1231)
 
 ## API 接口
 
