@@ -5,12 +5,7 @@ import customModel from "../model/custom.js"
 class Index {
 	async index(ctx) {
 		// 获取网站地址
-		let url = null
-		if (ctx.request.method == 'GET') {
-			url = new URL(ctx.request.query.url)
-		} else {
-			url = new URL(ctx.request.body.url)
-		}
+		let url = ctx.request.body.url
 
 		// 判断当前域名的数据是否存在于数据库
 		if (!await infoModel.dataExist(url)) {
