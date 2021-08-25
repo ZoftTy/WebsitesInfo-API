@@ -1,6 +1,7 @@
 # deploy.yaml
 apps:
-  - script: './app/app.js' # 入口文件
+  - script: 'npm' # 入口文件
+    node_args: 'run start'
     name: 'WebInfo' # 程序名称
     env: # 环境变量
       COMMON_VARIABLE: true
