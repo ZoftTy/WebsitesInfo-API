@@ -7,7 +7,7 @@ const router = new Router()
 const index = new IndexController()
 const manage = new ManageController()
 
-router.get('/', ctx => ctx.redirect('https://github.com/ZoftTy/WebsitesInfo-API.git'))
+router.get('/', ctx => ctx.response.redirect('https://github.com/ZoftTy/WebsitesInfo-API.git'))
 
 // 获取网站所有信息
 router.post('/api/info', ctx => index.index(ctx))
