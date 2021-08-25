@@ -1,16 +1,16 @@
-import Router from "koa-router"
-import IndexController from "./controller/index.js"
-import ManageController from "./controller/manage.js"
-
+import Router from 'koa-router'
+import IndexController from './controller/index.js'
+import ManageController from './controller/manage.js'
+import package from '../package.json'
 
 // 实例化
 const router = new Router()
 const index = new IndexController()
 const manage = new ManageController()
 
-// 获取网站所有信息
+router.get('/', ctx => ctx.redirect(package.repository))
 
-router.get('/api/info', ctx => index.index(ctx))
+// 获取网站所有信息
 router.post('/api/info', ctx => index.index(ctx))
 
 // 添加网站图标缓存
