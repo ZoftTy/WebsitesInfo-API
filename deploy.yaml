@@ -1,7 +1,6 @@
 # deploy.yaml
 apps:
-  - script: 'npm' # 入口文件
-    node_args: 'run start'
+  - script: 'yarn start' # 入口文件
     name: 'WebInfo' # 程序名称
     env: # 环境变量
       COMMON_VARIABLE: true
